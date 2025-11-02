@@ -1,4 +1,5 @@
 
+from math import pi
 def Circle_area(Radius, Pi=3.14):
     """
     Calculate the area of a Circle using Radius .
@@ -11,7 +12,7 @@ def Circle_area(Radius, Pi=3.14):
     Returns:
         float: The area of the Circle
     """
-    area =(pi *(Radius**2))
+    area =(Pi *(Radius**2))
     return area
 
 
