@@ -1,22 +1,12 @@
 import math
 
-# -------------------------------------------------------------
-# פונקציה לחישוב קצב הגידול (Growth_rate)
-# שמה שונה ל-growth_rate (snake_case)
+# Function to calculate the growth rate
 def growth_rate(N_t, N_0, t):
     """
     Calculate the Specific Growth Rate (k) of a cell/Bacteria.
-    
     Formula: k = (log2(N_t) - log2(N_0)) / t 
-    
-    Args:
-        N_t (float): Population density at finite time (t)
-        N_0 (float): Population density at initial time (t=0)
-        t (float): time interval
-    Returns:
-        float: The Specific Growth Rate (k) in units of generations/time. 
     """
-    # בדיקת קלט מאוחדת: כל הפרמטרים חייבים להיות חיוביים.
+    # Consolidated input validation
     if t <= 0 or N_t <= 0 or N_0 <= 0:
         raise ValueError("Error: All parameters (N_t, N_0, t) must be positive.")
         
@@ -25,7 +15,7 @@ def growth_rate(N_t, N_0, t):
     return k
 
 # -------------------------------------------------------------
-# פונקציית עזר פשוטה לקבלת קלט חיובי
+# Helper function to get valid positive floating-point input
 def get_positive_float(prompt_text):
     """Prompts input from the user in a loop until a positive number is received.""" 
     while True:
@@ -34,33 +24,37 @@ def get_positive_float(prompt_text):
             num = float(value_str)
             
             if num > 0:
-                return num  # יציאה מהפונקציה והחזרת הערך
+                return num 
             else:
+                # English error message
                 print('Value must be greater than zero. Try again.')
         except ValueError:
+            # English error message
             print("Invalid input. Please enter a valid number.")
 
 # -------------------------------------------------------------
-# הפונקציה האינטראקטיבית המפושטת
+# The simplified interactive function
 def interactive_growth_rate_calculator_simple():
-    print("--- Interactive growth rate calculator (k) ---")
+    # English title
+    print("--- Interactive growth rate calculator (k) ---") 
 
     try:
-        # קריאה לפונקציית העזר לקבלת כל אחד מהפרמטרים
-        N_t = get_positive_float("Population density at finite time (N_t): ")
-        N_0 = get_positive_float("Population density at initial time (N_0): ")
-        t = get_positive_float("Time interval (t): ")
+        # English prompts for input
+        N_t = get_positive_float("Enter Final Population Density (N_t): ")
+        N_0 = get_positive_float("Enter Initial Population Density (N_0): ")
+        t = get_positive_float("Enter Time interval (t): ")
 
-        # ביצוע החישוב (שימוש בשם המתוקן: growth_rate)
+        # Perform calculation
         k = growth_rate(N_t, N_0, t)
         
+        # English result output
         print("\n--- Result ---")
         print(f"The growth rate (k) is: {k:.4f} generations per unit time.")
         
     except Exception as e:
-        # טיפול בשגיאות
+        # English error handling
         print(f"\nAn error occurred: {e}")
 
-# הפעלת התוכנית האינטראקטיבית
+# Run the interactive program
 if __name__ == "__main__":
     interactive_growth_rate_calculator_simple()
