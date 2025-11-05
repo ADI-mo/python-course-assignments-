@@ -2,3 +2,4 @@ In the lab we work a lot with growth curves of bacteria, so I built a code that 
 Write code to calculate growth rate with GUI
 Write a code to calculate growth rate with ainterctive with input,
 Write a code to calculate growth rate with command line
+I made some adjustments to the code
