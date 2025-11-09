@@ -3,7 +3,7 @@ n the lab we work a lot with growth curves of bacteria, so I built a code that c
 . The goal is to accurately calculate the specific growth rate (k) of bacteria or cells using concentration and time data.
 
 
-1. The Core Logic: The Calculation Function
+#The Core Logic: The Calculation Function
 
 The central calculation is handled by a single, reusable function (located in a file calculator_logic.py). This function applies the formula for exponential growth.
 
