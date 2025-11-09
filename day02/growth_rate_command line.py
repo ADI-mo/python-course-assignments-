@@ -1,19 +1,7 @@
 import math
 import sys
+from calculator_logic import growth_rate
 
-# -------------------------------------------------------------
-# פונקציה לחישוב קצב הגידול (Growth_rate) - נשארת זהה
-def growth_rate(N_t, N_0, t):
-    """
-    Calculate the Specific Growth Rate (k) of a cell/Bacteria.
-    Formula: k = (log2(N_t) - log2(N_0)) / t 
-    """
-    if t <= 0 or N_t <= 0 or N_0 <= 0:
-        raise ValueError("Error: All parameters (N_t, N_0, t) must be positive.")
-        
-    num_generations = math.log2(N_t) - math.log2(N_0)
-    k = num_generations / t
-    return k
 
 # -------------------------------------------------------------
 # הפונקציה המבצעת את החישוב בממשק CLI
