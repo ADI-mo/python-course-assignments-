@@ -6,27 +6,26 @@ from calculator_logic import growth_rate
 # -------------------------------------------------------------
 # Command-Line Interface (CLI) function
 def cli_growth_rate_calculator():
-    
-    # 1. בדיקת מספר הארגומנטים בשורת הפקודה
-    # sys.argv מכיל את שם הקובץ (אינדקס 0) ואחריו הארגומנטים. 
-    # לכן, מספר הארגומנטים צריך להיות 4 (שם הקובץ + 3 ערכים)
+    # 1. Validating the number of command-line arguments
+    # sys.argv[0]is the name of the file itself
+    # we expect three additional arguments: N_t, N_0, and t
     if len(sys.argv) != 4:
         print("Error: Incorrect number of arguments.")
         print("Usage: python your_script_name.py <N_t> <N_0> <t>")
         print("Example: python calculator.py 100000 1000 5")
-        sys.exit(1) # יציאה עם קוד שגיאה
+        sys.exit(1) # Exit with error code
     
     try:
-        # 2. קבלת הקלט כארגומנטים בשורת הפקודה והמרה ל-float
-        # sys.argv[1] הוא N_t, sys.argv[2] הוא N_0, sys.argv[3] הוא t
+        # 2. Parsing the command-line arguments
+        # Convert the arguments from strings to floats
         N_t = float(sys.argv[1])
         N_0 = float(sys.argv[2])
         t = float(sys.argv[3])
 
-        # 3. ביצוע החישוב
+        # 3.Performing the calculation
         k = growth_rate(N_t, N_0, t)
         
-        # 4. הדפסת התוצאה
+        # 4. Printing the result
         print(f"\n--- Growth Rate Calculation (CLI) ---")
         print(f"N_t (Final Density): {N_t}")
         print(f"N_0 (Initial Density): {N_0}")
@@ -39,10 +38,10 @@ def cli_growth_rate_calculator():
         sys.exit(1)
         
     except Exception as e:
-        # לכידת שגיאות מהפונקציה growth_rate (כמו קלט שלילי)
+        # Catch-all for any other exceptions
         print(f"\nAn error occurred: {e}")
         sys.exit(1)
 
-# הפעלת התוכנית ב-CLI
+#Running the program in the CLI
 if __name__ == "__main__":
     cli_growth_rate_calculator()
