@@ -4,12 +4,12 @@ from calculator_logic import growth_rate
 
 
 # -------------------------------------------------------------
-# הפונקציה המבצעת את החישוב בממשק CLI
+# Command-Line Interface (CLI) function
 def cli_growth_rate_calculator():
     
-    # 1. בדיקת מספר הארגומנטים
+    # 1. בדיקת מספר הארגומנטים בשורת הפקודה
     # sys.argv מכיל את שם הקובץ (אינדקס 0) ואחריו הארגומנטים. 
-    # אנחנו צריכים 3 ארגומנטים נוספים (N_t, N_0, t), כלומר סה"כ 4 פריטים.
+    # לכן, מספר הארגומנטים צריך להיות 4 (שם הקובץ + 3 ערכים)
     if len(sys.argv) != 4:
         print("Error: Incorrect number of arguments.")
         print("Usage: python your_script_name.py <N_t> <N_0> <t>")
