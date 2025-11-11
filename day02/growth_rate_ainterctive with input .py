@@ -20,6 +20,11 @@ def get_positive_float(prompt_text):
                 print('Value must be greater than zero. Try again.')
         except ValueError:
             print("Invalid input. Please enter a valid number.")
+#Helper function to get time unit from the user
+def get_time_unit():
+    """Prompts the user to enter a time unit for the growth rate."""
+    time_unit = input("Enter the time unit for growth rate (e.g., hours, days): ")
+    return time_unit.strip()  # Remove any leading/trailing whitespace
 
 # -------------------------------------------------------------
 # Core interactive function
@@ -31,12 +36,14 @@ def interactive_growth_rate_calculator_simple():
         N_t = get_positive_float("Population density at finite time (N_t): ")
         N_0 = get_positive_float("Population density at initial time (N_0): ")
         t = get_positive_float("Time interval (t): ")
+        time_unit = get_time_unit() # NEW: Capture the time unit
 
         # Performing the calculation
         k = growth_rate(N_t, N_0, t)
         
         print("\n--- Result ---")
-        print(f"The growth rate (k) is: {k:.4f} generations per unit time.")
+        # Display the result with the captured unit (MODIFIED)
+        print(f"The growth rate (k) is: {k:.4f} generations per {time_unit}.")
         
     except Exception as e:
         # Catch any unexpected errors from growth_rate function

@@ -9,7 +9,7 @@ def cli_growth_rate_calculator():
     # 1. Validating the number of command-line arguments
     # sys.argv[0]is the name of the file itself
     # we expect three additional arguments: N_t, N_0, and t
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         print("Error: Incorrect number of arguments.")
         print("Usage: python your_script_name.py <N_t> <N_0> <t>")
         print("Example: python calculator.py 100000 1000 5")
@@ -21,6 +21,7 @@ def cli_growth_rate_calculator():
         N_t = float(sys.argv[1])
         N_0 = float(sys.argv[2])
         t = float(sys.argv[3])
+        time_unit = sys.argv[4] 
 
         # 3.Performing the calculation
         k = growth_rate(N_t, N_0, t)
@@ -30,7 +31,8 @@ def cli_growth_rate_calculator():
         print(f"N_t (Final Density): {N_t}")
         print(f"N_0 (Initial Density): {N_0}")
         print(f"t (Time Interval): {t}")
-        print(f"The specific growth rate (k) is: {k:.4f} generations per unit time.")
+        print(f"Time Unit Used: {time_unit}")
+        print(f"The specific growth rate (k) is: {k:.4f} generations per {time_unit}.")
         
     except ValueError:
         print("\nError: All arguments must be valid positive numbers.")
