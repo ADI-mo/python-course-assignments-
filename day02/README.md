@@ -46,3 +46,10 @@ The code was written using AI - Gimni 2.5, I instructed him to write a function 
 Writing code for calculating the growth rate with interactive input,
 Writing code for calculating the growth rate with command line,
 I made some adjustments to the code.
+After a comment from a student who went through the file, I made changes using AI - Gimni 2.5, I gave it a few commands
+add a unit input (like OD for the growth rate) and time units so that the final result will be generations per time unit that the user adds.
+After there were glitches in the GUI file, I wrote to it Prevent the opening of both windows? Change the code so that the result displays the number of generations per time unit that was recorded
+Then I asked it to be able to accept as input only certain text inputs and not any text in time units.
+
+
+To run your current GUI file (growth_rate_GUI.py) and the accompanying console interfaces, no external installation is required via pip install, since the code only uses Python's built-in libraries. These libraries include math (for calculating logarithms), sys (for the CLI interface), and tkinter along with the ttk module (for creating the graphical interface and widgets like the Combobox). As long as you have installed Python in a standard way, especially on an operating system like Windows, all the required files should already be installed and ready to run.
