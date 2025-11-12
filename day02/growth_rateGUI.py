@@ -2,7 +2,7 @@ import math
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk # NEW: Import ttk for Combobox
-from calculator_logic import growth_rate 
+from cGrowth Rate Logic and SciPy Fit  import growth_rate 
 
 
 # -------------------------------------------------------------

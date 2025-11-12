@@ -1,5 +1,5 @@
 import pytest
-from calculator_logic import growth_rate, growth_rate_fit
+from Growth_Rate_Logic_and_SciPy_Fit import growth_rate, growth_rate_fit
 import numpy as np
 
 # --- Tests for the single-point growth_rate function ---
