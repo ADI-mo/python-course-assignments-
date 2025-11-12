@@ -6,7 +6,7 @@ import numpy as np
 import io
 
 # Import the enhanced logic, including the SciPy fitting function
-from Growth_Rate_Logic_and_SciPy_Fit import growth_rate, growth_rate_fit
+from  calculator_logic import growth_rate, growth_rate_fit
 
 # --- Global Configuration and State ---
 ALLOWED_TIME_UNITS = ["hours", "minutes", "days", "seconds"]
