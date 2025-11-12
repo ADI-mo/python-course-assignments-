@@ -1,12 +1,151 @@
-🧪 Modular Growth Rate Calculator (Python, SciPy, Matplotlib)This is a modular Python project designed to calculate and analyze the specific growth rate ($k$) of biological populations (e.g., bacteria, cells) using time-concentration (Time-Series) data.✨ Key FeaturesSingle-Point Calculation ($k$): Basic method based on $N_0$ and $N_t$.Multi-Point Fit: Uses linear regression (SciPy) for accurate growth curve analysis across multiple data points.Graphical Interface (GUI): Load data, plot graphs (Matplotlib), and display results in a user-friendly window.File Loading: Ability to load data directly from CSV or TXT files.📈 Linear Regression PrincipleLinear Regression is a statistical tool used to find the line of best fit for a set of data points. In this project, we use it to calculate the growth rate ($k$) reliably, even when noise is present in the lab data.Logarithmic Transformation: Cell growth is an exponential process. To transform it into a linear process, we apply a logarithmic transformation to the concentration (base 2):$$ \\ \log\_2(N) = \log\_2(N\_0) + k \cdot t
-$$$$$$Where $\log_2(N)$ is the vertical axis, and $t$ is the horizontal axis.Finding the Slope: After the transformation, the data points form a straight line, and SciPy's linear regression finds the slope of this line:$$ \\ \text{Slope} = k
-$$$$$$The slope ($k$) is the specific growth rate per unit of time, representing the number of doublings (Generations) per unit of time.$R^2$ Metric: We also calculate the Coefficient of Determination ($R^2$). This value (between 0 and 1) shows how well the straight line fits the $\log_2$ data. An $R^2$ closer to 1.0 indicates a better fit for the exponential growth phase.⚠️ Important Usage Note:This mathematical model is valid only for the exponential growth phase of the culture. You must input only the data points corresponding to this phase to get an accurate $k$ value. The $R^2$ value can be used as a measure for selecting the correct points.🏗️ Project StructureThe business logic is completely separated from the interface, ensuring stability and ease of testing.FileRoleKey Librariescalculator_logic.pyBusiness Logic. Contains the calculation functions growth_rate and growth_rate_fit.numpy, scipy.statsgrowth_rateGUI.pyMain Application (GUI). The full graphical interface.tkinter, matplotlibtest_calculator_logic.pyUnit Tests. Comprehensive testing of all calculation functions.pytest, numpy🛠️ Installation & RunningThe project requires external libraries for advanced calculations and graphics.📥 RequirementsEnsure you have Python 3 installed.Installing DependenciesInstall all required libraries using pip:pip install scipy matplotlib pytest numpy
-🚀 Running the Application (GUI)This is the main way to use the upgraded application:python growth_rateGUI.py
-Usage: Enter time and concentration points or use the "Load Data from File" button. Click "Calculate & Plot Growth Rate (k)" to get the fitted results and the graph.📁 File Format for Data LoadingWhen you click "Load Data from File", the file must meet the following conditions:Format: Text file (.txt) or CSV (.csv).Two-Column Structure:Column 1: Time (t). Must be a non-negative value ($\ge 0$).Column 2: Concentration (N). Must be a positive value ($> 0$).Delimiter: Columns can be separated by commas (,), tabs, or spaces.Comments: Lines starting with # or empty lines are ignored.Example File Content:# Time (Hours), Concentration (OD)
+
+
+
+# 🧪 Modular Growth Rate Calculator (Python, SciPy, Matplotlib)
+
+This is a **modular Python project** designed to calculate and analyze the **specific growth rate ($k$)** of biological populations (e.g., bacteria, cells) using **time-concentration (Time-Series) data**.
+
+---
+
+## ✨ Key Features
+
+* **Single-Point Calculation ($k$)**: Basic method based on $N_0$ and $N_t$.
+* **Multi-Point Fit**: Uses **linear regression** (SciPy) for accurate growth curve analysis across multiple data points.
+* **Graphical Interface (GUI)**: Load data, plot graphs (Matplotlib), and display results in a user-friendly window.
+* **File Loading**: Ability to load data directly from CSV or TXT files.
+
+---
+
+## 📈 Linear Regression Principle
+
+**Linear Regression** is a statistical tool used to find the line of best fit for a set of data points. In this project, we use it to calculate the growth rate ($k$) reliably, even when noise is present in lab data.
+
+### Logarithmic Transformation
+
+Cell growth is an exponential process. To transform it into a linear process, we apply a logarithmic transformation (base 2):
+
+[
+\log_2(N) = \log_2(N_0) + k \cdot t
+]
+
+* $\log_2(N)$ is the vertical axis
+* $t$ is the horizontal axis
+
+### Finding the Slope
+
+After transformation, the data points form a straight line. **SciPy's linear regression** finds the slope:
+
+[
+\text{Slope} = k
+]
+
+The slope ($k$) is the specific growth rate per unit of time, representing the number of doublings (Generations) per unit time.
+
+### $R^2$ Metric
+
+The **Coefficient of Determination ($R^2$)** shows how well the straight line fits the $\log_2$ data.
+
+* $R^2$ ranges between 0 and 1
+* Values closer to 1.0 indicate a better fit for the exponential growth phase
+
+> ⚠️ **Important Usage Note:**
+> Only input data corresponding to the **exponential growth phase** to get an accurate $k$. Use $R^2$ as a guide for selecting correct points.
+
+---
+
+## 🏗️ Project Structure
+
+The business logic is completely separated from the interface, ensuring stability and ease of testing.
+
+| File                       | Role                                                                                   | Key Libraries           |
+| -------------------------- | -------------------------------------------------------------------------------------- | ----------------------- |
+| `calculator_logic.py`      | Business Logic. Contains the calculation functions `growth_rate` and `growth_rate_fit` | `numpy`, `scipy.stats`  |
+| `growth_rateGUI.py`        | Main Application (GUI)                                                                 | `tkinter`, `matplotlib` |
+| `test_calculator_logic.py` | Unit Tests. Comprehensive testing of all calculation functions                         | `pytest`, `numpy`       |
+
+---
+
+## 🛠️ Installation & Running
+
+### 📥 Requirements
+
+* Python 3
+
+### Installing Dependencies
+
+```bash
+pip install scipy matplotlib pytest numpy
+```
+
+### 🚀 Running the Application (GUI)
+
+```bash
+python growth_rateGUI.py
+```
+
+**Usage:**
+
+* Enter multiple time and concentration points **or** use the **"Load Data from File"** button.
+* Click **"Calculate & Plot Growth Rate (k)"** to get fitted results and a graph.
+
+---
+
+## 📁 File Format for Data Loading
+
+When loading data from a file, the file must meet the following conditions:
+
+* **Format:** `.txt` or `.csv`
+* **Two-Column Structure:**
+
+  1. Time ($t$) ≥ 0
+  2. Concentration ($N$) > 0
+* **Delimiter:** Columns can be separated by commas `,`, tabs, or spaces
+* **Comments:** Lines starting with `#` or empty lines are ignored
+
+**Example File Content:**
+
+```
+# Time (Hours), Concentration (OD)
 0, 0.1
 1.5, 0.25
 3.0, 0.5
 4.5, 1.05
 6.0, 2.0
-✅ Running TestsTo verify the integrity of the calculation logic:pytest test_calculator_logic.py
-🤖 AI Usage and Debugging DocumentationStepPrompt Provided to AI (Gemini 2.5)Purpose1.Enhance the calculator_logic.py file. Add a new function called growth_rate_fit that calculates the specific growth rate ($k$) using a set of multiple time and concentration points...Integrating SciPy for multi-point calculation.2.Create a new file test_calculator_logic.py using pytest. Write comprehensive unit tests for both the existing growth_rate(Nt, N0, t) function and the new growth_rate_fit(times, concentrations) function...Adding Unit Tests and ensuring testability.3.Update growth_rateGUI.py. Modify the Tkinter interface to allow users to input multiple (time, concentration) data points... and uses matplotlib to display a plot...Updating GUI for multi-point input and Adding Plotting (Matplotlib).4.Update the README.md to explain the new file structure, the use of SciPy and Matplotlib, the installation steps... Also, include this table detailing the AI prompts used.Finalizing Documentation.5.Add an option to add data from a file to the growth_rateGUI.py application.Adding File Loading Feature6.Add a detailed explanation about Linear Regression and the necessity to use only Exponential Growth Phase data to the README.md.Clarifying Usage for Biologists.Post-Development Debugging (Critical Fix)Test Failure: The test_growth_rate_fit_stagnant_data_k0 failed initially because stagnant data (unchanging concentration) caused SciPy to calculate an $R^2$ value that was Not a Number ($\text{NaN}$), due to division by zero.The Fix: A specific logical check was added inside growth_rate_fit to detect zero variance. In this case, the function manually returns $k=0.0$ and $R^2=1.0$, which is the logically correct result and resolves the statistical error.
+```
+
+---
+
+## ✅ Running Tests
+
+To verify the integrity of the calculation logic:
+
+```bash
+pytest test_calculator_logic.py
+```
+
+---
+
+## 🤖 AI Usage and Debugging Documentation
+
+| Step | Prompt Provided to AI             | Purpose                                                                                                           |
+| ---- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| 1    | Enhance `calculator_logic.py`     | Add `growth_rate_fit` using multiple time and concentration points. Integrates SciPy for multi-point calculation. |
+| 2    | Create `test_calculator_logic.py` | Write comprehensive unit tests for both `growth_rate` and `growth_rate_fit`. Ensure edge cases are handled.       |
+| 3    | Update `growth_rateGUI.py`        | Allow multi-point input, call `growth_rate_fit`, and embed Matplotlib plot in the GUI.                            |
+| 4    | Update `README.md`                | Document file structure, SciPy/Matplotlib usage, installation steps, running GUI/tests, and AI prompts used.      |
+| 5    | Add file loading to GUI           | Users can now load CSV/TXT data directly.                                                                         |
+| 6    | Document linear regression usage  | Explain why only exponential growth phase data should be used.                                                    |
+
+### Post-Development Debugging (Critical Fix)
+
+**Issue:**
+
+* `test_growth_rate_fit_stagnant_data_k0` failed because stagnant data (no change in concentration) caused SciPy to calculate $R^2 = \text{NaN}$ due to division by zero.
+
+**Fix:**
+
+* Added logical check inside `growth_rate_fit` for zero variance.
+* Returns `k=0.0` and `R^2=1.0` for stagnant data, resolving the statistical error and making the test pass.
+
+--
+
