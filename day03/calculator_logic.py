@@ -65,6 +65,13 @@ def growth_rate_fit(time_points: List[float], concentration_points: List[float])
     # 2. Transform concentration data: log2(N)
     log2_concentrations = np.log2(concentration_points)
     
+    # --- FIX: Handle the case where all log2_concentrations are identical (zero variance) ---
+    if np.all(log2_concentrations == log2_concentrations[0]):
+        # If the data is constant, the slope (k) is 0 and the fit is perfect (R^2 = 1.0)
+        # This prevents division by zero in linregress that yields NaN for R-value.
+        return 0.0, 1.0
+    # ---------------------------------------------------------------------------------------
+
     # 3. Perform Linear Regression (SciPy)
     # The slope of log2(N) vs t is the growth rate (k)
     # r_value is the Pearson correlation coefficient
@@ -77,5 +84,3 @@ def growth_rate_fit(time_points: List[float], concentration_points: List[float])
     r_squared = r_value**2
     
     return k, r_squared
-
-# This file does not run independently, it is imported by others.
